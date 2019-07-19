@@ -1,0 +1,6 @@
+{% extends "praTwig.html.twig" %}
+{% block content %}
+{% for user in users %}
+    {{ include('showUser.html.twig',{'user':user}) }}<br>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'praTwig.html.twig' %}
+{% block content %}
+
+    {% if message == 'user_dont_exist' %}
+        <h3>User dont exist</h3>
+
+    {% elseif message == 'added_to_db' %}
+        <h3>Added to datebase</h3>
+
+    {% elseif message == '404' %}
+        <h3>Error 404</h3>
+
+    {% elseif message == 'updated_in_db' %}
+        <h3>Record updated</h3>
+
+    {% elseif message == 'deleted_from_db'%}
+        <h3>Record deleted</h3>
+    {% elseif message == 'address_dont_exist' %}
+        <h3>Address dont exist</h3>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,45 @@
+Name: {{ user.name }}<br>
+Surname: {{ user.surname }}<br>
+Age: {{ user.age }}<br>
+{% if user.sex == 1 %}
+    Sex: male<br>
+{% else %}
+    Sex: female<br>
+{% endif %}
+<div>
+<h3>Addresses</h3>
+    {% for address in user.addresses %}
+        Street: {{ address.Street }}<Br>
+        Number: {{ address.Number }}<br>
+        Zip code: {{ address.zipCode }}<br>
+        Country: {{ address.country }}<br>
+        <a href="{{ path('deleteAddress',{'id': address.id}) }}">Delete</a><br>
+        <a href="{{ path('modifyAddress',{'id': address.id}) }}">Modify</a><br><br>
+    {% endfor %}
+</div>
+<div>
+    <h3>Emails</h3>
+    {% for mail in user.mails %}
+        Mail: {{ mail.Name }}<br>
+        <a href="{{ path('modifyMail',{'id': mail.id}) }}">Modify</a>
+        <a href="{{ path('deleteMail',{'id': mail.id}) }}">Delete</a>
+    {%  endfor %}
+</div>
+<div>
+    <h3>Phone numbers</h3>
+    {% for phone_number in user.phoneNumbers %}
+        Phone number: {{ phone_number.number }}<br>
+        <a href="{{ path('modifyPhone',{'id': phone_number.id}) }}">Modify</a>
+        <a href="{{ path('deletePhone',{'id': phone_number.id}) }}">Delete</a>
+
+    {% endfor %}
+</div><br>
+<a href="{{ path('showUser',{'id': user.id}) }}">Show</a>
+<a href="{{ path('AddAddress',{'id': user.id}) }}">Add address</a>
+<a href="{{ path('AddMail',{'id': user.id}) }}">Add mail</a>
+<a href="{{ path('AddPhone',{'id': user.id}) }}">Add phone</a>
+<a href="{{ path('modifyUser',{'id': user.id}) }}">Modify</a>
+<a href="{{ path('deleteUser',{'id': user.id}) }}">Delete</a>
+<a href="{{ path('addUserToGroup',{'id': user.id}) }}">Add  to group</a><br>
+
+

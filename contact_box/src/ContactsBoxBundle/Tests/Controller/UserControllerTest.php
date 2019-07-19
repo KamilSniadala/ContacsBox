@@ -1,0 +1,9 @@
+<?php
+
+namespace ContactsBoxBundle\Tests\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
+class UserControllerTest extends WebTestCase
+{
+}
