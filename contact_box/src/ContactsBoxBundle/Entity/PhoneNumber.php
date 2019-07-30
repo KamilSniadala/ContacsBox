@@ -33,6 +33,7 @@ class PhoneNumber
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
+
     /**
      * Get id
      *

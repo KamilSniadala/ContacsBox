@@ -23,7 +23,7 @@ class GroupListType extends AbstractType
     {
         $builder
             ->setMethod('POST')
-            ->add('groups',EntityType::class,
+            ->add('groups', EntityType::class,
                 [
                     'class' => Groups::class,
                     'choice_label' => 'name'
@@ -33,6 +33,7 @@ class GroupListType extends AbstractType
                     'label' => 'Select'
                 ]);
     }
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(

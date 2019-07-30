@@ -29,14 +29,15 @@ class AddressType extends AbstractType
             ->add('zip_code', TextType::class)
             ->add('country', CountryType::class,
                 ['placeholder' => 'Choose an option',])
-            ->add('Save', SubmitType::class,[
+            ->add('Save', SubmitType::class, [
                 'label' => 'Create address'
             ]);
     }
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
-            ['data_class'=>Address::class]
+            ['data_class' => Address::class]
         );
     }
 }

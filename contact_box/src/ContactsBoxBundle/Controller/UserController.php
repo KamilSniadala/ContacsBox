@@ -172,7 +172,7 @@ class UserController extends Controller
         $usersRepo = $em->getRepository('ContactsBoxBundle:User');
 
         $user = $usersRepo->find($id);
-        
+
         if (!$user) {
             return $this->render('responses.html.twig', ['message' => 'user_dont_exist']);
         }
@@ -208,7 +208,7 @@ class UserController extends Controller
         /** @var EntityManagerInterface $em */
         $em = $this->getDoctrine()->getManager();
 
-        $groupId=$request->request->get('group_list')['groups'];
+        $groupId = $request->request->get('group_list')['groups'];
         return new Response('<html><body></body>');
     }
 

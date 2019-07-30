@@ -36,6 +36,7 @@ class UsersAndGroupsType extends AbstractType
                     'label' => 'Save'
                 ]);
     }
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(

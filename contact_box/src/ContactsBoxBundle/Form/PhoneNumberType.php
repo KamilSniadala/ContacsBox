@@ -25,11 +25,12 @@ class PhoneNumberType extends AbstractType
     {
         $builder
             ->setMethod("POST")
-            ->add('number',TelType::class)
-            ->add('save', SubmitType::class,['label'=>'Add phone number']);
+            ->add('number', TelType::class)
+            ->add('save', SubmitType::class, ['label' => 'Add phone number']);
     }
+
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(['data_class'=>PhoneNumber::class]);
+        $resolver->setDefaults(['data_class' => PhoneNumber::class]);
     }
 }

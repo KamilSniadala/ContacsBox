@@ -33,6 +33,7 @@ class Groups
      * @ORM\ManyToMany(targetEntity="User", mappedBy="groups")
      */
     private $users;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();

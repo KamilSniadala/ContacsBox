@@ -24,12 +24,12 @@ class MailType extends AbstractType
             ->setMethod('POST')
             ->add('name', EmailType::class)
             ->add('save', SubmitType::class,
-                ['label'=>'Add email']);
+                ['label' => 'Add email']);
 
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(['dataclass'=>Mail::class]);
+        $resolver->setDefaults(['dataclass' => Mail::class]);
     }
 }

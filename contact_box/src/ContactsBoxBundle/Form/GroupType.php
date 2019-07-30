@@ -22,10 +22,11 @@ class GroupType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('save', SubmitType::class,['label' => 'Add new group']);
+            ->add('save', SubmitType::class, ['label' => 'Add new group']);
     }
+
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver ->setDefaults(['data_class' => 'ContactsBoxBundle\Entity\Groups']);
+        $resolver->setDefaults(['data_class' => 'ContactsBoxBundle\Entity\Groups']);
     }
 }

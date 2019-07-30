@@ -16,19 +16,18 @@ class AddressController extends Controller
      */
     public function addressFormAction($id)
     {
-        $address= new Address();
-        $form = $this->createForm(AddressType::class,$address);
-        $em= $this->getDoctrine()->getManager();
+        $address = new Address();
+        $form = $this->createForm(AddressType::class, $address);
+        $em = $this->getDoctrine()->getManager();
 
-        $usersRepo= $em -> getRepository('ContactsBoxBundle:User');
-        $user = $usersRepo -> find($id);
+        $usersRepo = $em->getRepository('ContactsBoxBundle:User');
+        $user = $usersRepo->find($id);
 
-        if (!$user)
-        {
-            return $this->render('responses.html.twig',['message'=>'user_dont_exist']);
+        if (!$user) {
+            return $this->render('responses.html.twig', ['message' => 'user_dont_exist']);
         }
 
-        return $this -> render('addingNewUserFormular.html.twig',['form' => $form->createView()]);
+        return $this->render('addingNewUserFormular.html.twig', ['form' => $form->createView()]);
     }
 
     /**
@@ -36,30 +35,28 @@ class AddressController extends Controller
      */
     public function addAddressAction(Request $request, $id)
     {
-        $em= $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
-        $usersRepo= $em -> getRepository('ContactsBoxBundle:User');
-        $user = $usersRepo -> find($id);
+        $usersRepo = $em->getRepository('ContactsBoxBundle:User');
+        $user = $usersRepo->find($id);
 
-        if (!$user)
-        {
-           return $this->render('responses.html.twig',['message'=>'user_dont_exist']);
+        if (!$user) {
+            return $this->render('responses.html.twig', ['message' => 'user_dont_exist']);
         }
 
-        $form= $this -> createForm(AddressType::class, new Address());
+        $form = $this->createForm(AddressType::class, new Address());
         $form->handleRequest($request);
 
-        if ($form->isSubmitted())
-        {
+        if ($form->isSubmitted()) {
 
             $address = $form->getData();
             $address->setUserId($user);
             $em->persist($address);
             $em->flush();
 
-            return $this->render('responses.html.twig',['message'=>'added_to_db']);
+            return $this->render('responses.html.twig', ['message' => 'added_to_db']);
         }
-        return $this->render('responses.html.twig',['message' => '404']);
+        return $this->render('responses.html.twig', ['message' => '404']);
     }
 
     /**
@@ -67,48 +64,45 @@ class AddressController extends Controller
      */
     public function modifyAction($id)
     {
-        $em = $this -> getDoctrine() -> getManager();
+        $em = $this->getDoctrine()->getManager();
 
-        $addressRepo = $em ->getRepository('ContactsBoxBundle:Address');
+        $addressRepo = $em->getRepository('ContactsBoxBundle:Address');
         $address = $addressRepo->find($id);
 
-        if (!$address)
-        {
+        if (!$address) {
             return $this->render('responses.html.twig', ['message' => 'address_dont_exist']);
         }
 
-        $form = $this -> createForm(AddressType::class, $address);
+        $form = $this->createForm(AddressType::class, $address);
 
-        return $this -> render('addingNewUserFormular.html.twig',['form' => $form->createView()]);
+        return $this->render('addingNewUserFormular.html.twig', ['form' => $form->createView()]);
     }
 
     /**
      * @Route("/modifyAddress/{id}", name="modifyActionPost", methods={"POST"})
      */
-    public function modifyActionPost(Request $request,$id)
+    public function modifyActionPost(Request $request, $id)
     {
-        $em = $this -> getDoctrine() -> getManager();
+        $em = $this->getDoctrine()->getManager();
 
-        $addressRepo = $em ->getRepository('ContactsBoxBundle:Address');
+        $addressRepo = $em->getRepository('ContactsBoxBundle:Address');
         $address = $addressRepo->find($id);
 
-        if (!$address)
-        {
+        if (!$address) {
             return $this->render('responses.html.twig', ['message' => 'address_dont_exist']);
         }
 
-        $form = $this -> createForm(AddressType::class, $address);
-        $form -> handleRequest($request);
+        $form = $this->createForm(AddressType::class, $address);
+        $form->handleRequest($request);
 
-        if ($form->isSubmitted())
-        {
+        if ($form->isSubmitted()) {
 
             $address = $form->getData();
             $em->flush();
 
-            return $this->render('responses.html.twig',['message'=>'updated_in_db']);
+            return $this->render('responses.html.twig', ['message' => 'updated_in_db']);
         }
-        return $this->render('responses.html.twig',['message' => '404']);
+        return $this->render('responses.html.twig', ['message' => '404']);
     }
 
     /**
@@ -116,19 +110,18 @@ class AddressController extends Controller
      */
     public function deleteAction($id)
     {
-        $em = $this -> getDoctrine() -> getManager();
+        $em = $this->getDoctrine()->getManager();
 
-        $addressRepo = $em ->getRepository('ContactsBoxBundle:Address');
+        $addressRepo = $em->getRepository('ContactsBoxBundle:Address');
         $address = $addressRepo->find($id);
 
-        if (!$address)
-        {
+        if (!$address) {
             return $this->render('responses.html.twig', ['message' => 'address_dont_exist']);
         }
 
-        $em -> remove($address);
-        $em -> flush();
+        $em->remove($address);
+        $em->flush();
 
-        return $this->render('responses.html.twig',['message' => 'deleted_from_db']);
+        return $this->render('responses.html.twig', ['message' => 'deleted_from_db']);
     }
 }

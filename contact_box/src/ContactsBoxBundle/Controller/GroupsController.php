@@ -17,11 +17,11 @@ class GroupsController extends Controller
      */
     public function addNewAction()
     {
-        $em = $this -> getDoctrine() -> getManager();
+        $em = $this->getDoctrine()->getManager();
 
-        $form = $this -> createForm(GroupType::class, new Groups());
+        $form = $this->createForm(GroupType::class, new Groups());
 
-        return $this -> render('addingNewUserFormular.html.twig',['form' => $form->createView()]);
+        return $this->render('addingNewUserFormular.html.twig', ['form' => $form->createView()]);
     }
 
     /**
@@ -29,16 +29,15 @@ class GroupsController extends Controller
      */
     public function addNewPostAction(Request $request)
     {
-        $em = $this -> getDoctrine() -> getManager();
+        $em = $this->getDoctrine()->getManager();
 
-        $form = $this -> createForm(GroupType::class, new Groups());
-        $form ->handleRequest($request);
+        $form = $this->createForm(GroupType::class, new Groups());
+        $form->handleRequest($request);
 
-        if ($form->isSubmitted())
-        {
+        if ($form->isSubmitted()) {
             $group = $form->getData();
-            $em -> persist($group);
-            $em -> flush();
+            $em->persist($group);
+            $em->flush();
 
             return $this->render('responses.html.twig', ['message' => 'added_to_db']);
         }
@@ -54,7 +53,7 @@ class GroupsController extends Controller
         $groupsRepo = $em->getRepository("ContactsBoxBundle:Groups");
         $groups = $groupsRepo->findAll();
 
-        return $this->render('showAllGroups.html.twig',['groups' => $groups]);
+        return $this->render('showAllGroups.html.twig', ['groups' => $groups]);
     }
 
     /**
@@ -69,11 +68,6 @@ class GroupsController extends Controller
 
         $query = $em->createQuery('SELECT u FROM ContactsBoxBundle:User u WHERE u.id=1');
         $query->getResult();
-        
-
-
-
-
 
 
         return new Response('<html><body>Dupa</body>');

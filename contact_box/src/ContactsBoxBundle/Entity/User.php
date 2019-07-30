@@ -77,11 +77,13 @@ class User
      */
     private $groups;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->addresses = new ArrayCollection();
-        $this->mails= new ArrayCollection();
+        $this->mails = new ArrayCollection();
         $this->groups = new ArrayCollection();
     }
+
     /**
      * Get id
      *
